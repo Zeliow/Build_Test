@@ -1,17 +1,805 @@
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation for Sites</title>
+    <title>Elec</title>
     <link rel="stylesheet" href="css/app.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap');
+      *{
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      /*
+      body{
+        overflow-x: hidden;
+        font-family: 'Open Sans', sans-serif;
+      }
+      */
+
+      @media (max-width: 639px){
+        .preview{
+          display: none;
+        }
+      }
+
+      header{
+        border-bottom:1px solid gray;
+        background-color: #FFFFFF;
+      }
+      .grid-container{
+        max-width: 1200px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .header_content{
+        min-height: 134px;
+        display: flex;
+        align-items: center;
+      }
+      .logo_info{
+        padding-top: 3px;
+        font-size: 8px;
+        color: #1F1F53;
+      }
+
+      .header_menu>li>a{
+        font-size: 12px;
+        color: #0F0F47;
+        font-weight: 600;
+      }
+
+      .button_menu_color{
+        background-color: #FFCA2F;
+        color: #2F3390;
+        font-weight: 600;
+        border-radius: 5px;
+      }
+      .preview{
+        border-bottom: 1px solid gray;
+      }
+      .screen_logo{
+        position: relative;
+      }
+      .screen_logo>.button{
+        position: absolute;
+        bottom: 200px;
+        left: 330px;
+      }
+      .journal_content{
+        position: relative;
+      }
+
+      .in_this_newspaper{
+        min-height: 138px;
+        border-bottom: 1px solid gray;
+        background-color: #EDEDF0;
+      }
+      .joural_container{
+        height: 138px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .number{
+        font-size: 30px;
+        color: #838383;
+        font-weight: 600;
+        margin-left: 55px;
+        width: 150px;
+        max-height: 45px;
+      }
+      .joural_logo{
+       margin-left: 30px;
+      }
+      .card_container{
+        padding-top:30px;
+      }
+      .title_list_one::before{
+        content: url(img/Прямоугольник\ 5\ копия@1X.png);
+        margin: 10px 25px 0 0;
+      }
+      .news_card{
+        margin-top: 50px;
+      }
+      .news_label{
+        font-size: 30px;
+        text-transform: uppercase;
+        font-weight: 900;
+        line-height: 40px;
+      }
+      .news_title{
+        font-size: 14px;
+        color: #00003B;
+      }
+      .number_journal>.cell{
+        margin-bottom: 5px;
+        text-decoration: underline;
+      }
+      #format{
+        margin: 0;
+        list-style-type: none;
+      }
+      #format>li{
+        text-decoration: underline;
+      }
+      .title_list_two::before{
+        content: url(img/Прямоугольник\ 5\ копия@1X.png);
+        margin-right: 25px;
+      }
+      .joural_container_info{
+        padding-top: 120px;
+        padding-bottom: 120px;
+      }
+
+      .news_card, .journal_content{
+        padding-left: 55px; 
+      }
+
+      .title_list{
+        font-weight: 800;
+        color: #00003B;
+        text-transform: uppercase;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
+      }
+      .in_number_list{
+        font-size: 25px;
+        font-weight: 600;
+        color: gray;
+      }
+      .in_journal_content_list{
+        display: flex;
+        align-items: center;
+        line-height: 138px;
+        padding-left: 40px;
+        margin: 0;
+      }
+      .in_journal_content_list>.list_sponsored{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 0;
+      }
+
+      .last_sponsored:last-child{
+        margin-right: 0px;
+      }
+      .left_journal_column{
+        padding-top: 20px;
+      }
+      .button_juournal_info{
+        background-color: #FF1121;
+        font-weight: 600;
+        font-size: 16px;
+      }
+      .image_journal{
+        margin-top: 30px;
+        box-shadow: 0 0 12px .2px gray ;
+      }
+      #ages{
+        margin: 0;
+        column-count: 2;
+      }
+      #ages>li{
+        text-decoration: underline;
+        list-style-type: none;
+      }
+      .news_row_one, .news_row_two{
+        display: flex;
+        justify-content: space-between;
+      }
+      .journal_join{
+        min-height: 360px;
+        background-color: #212434;
+      }
+      .container_journal_join{
+        padding-top: 60px;
+      }
+      .title_list_three{
+        color: #FFFFFF;
+      }
+      .title_list_three::before{
+        content: url(img/Прямоугольник\ 5\ копия\ 2@1X.png);
+        margin-right: 25px;
+        margin-top: 10px;
+      }
+      .age{
+        width: 20px;
+        border: 1px solid black;
+        border-radius: 100%;
+        padding: 6px 18px 5px 6px;
+      }
+      .tabs-panel ul{
+        margin: 0;
+      }
+      .tabs-panel ul li{
+        list-style-type: none;
+      }
+      .vertical_tabs{
+        column-count: 2;
+        padding-top: 11px;
+      }
+      .vertical_tabs li>a{
+        text-decoration: underline;
+        color: #00003B;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+      }
+
+      .vertical_tabs, .tabs-content, .tabs_content_vertical{
+        border: none;
+      }
+      .tabs-content, .vertical{
+        border: none;
+      }
+      .tabs-content.vertical{
+        border: none;
+      }
+      .left_column_tabs{
+        border-right: 1px solid #979797;;
+      }
+      .right_column_tabs{
+        padding-left: 30px;
+      }
+      .tags{
+        color: #d6d6d7;
+        font-size: 32px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+      }
+      .tabs-panel.is-active{
+        padding-left: 0;
+      }
+      .tabs-title>a{
+        padding: 0;
+        line-height: 34px;
+        color: #00003B;
+        font-size: 18px;
+        width: 50px;
+      }
+      .tabs-panel>ul>li{
+        text-decoration: underline;
+        cursor: pointer;
+        color: #00003B;
+        font-size: 18px;
+      }
+      .tabs_table{
+        border: none;
+      }
+      .block_two{
+        width: 800px;
+        height: 220px;
+        background-color: #292C3B;
+        position: absolute;
+        right: 200px;
+        bottom: 0;
+      }
+      .block_three{
+        width: 800px;
+        height: 220px;
+        background-color: #212434;
+        border-bottom: 8px solid #333645;
+        border-right: 8px solid #333645;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .block_one{
+        width: 780px;
+        height: 260px;
+        background-color: #EDEDF0;
+        position: absolute;
+      }
+      .tabs-title > a:focus, .tabs-title > a[aria-selected="true"]{
+        background: none;
+        color: #2F3390;
+        font-weight: 700;
+      }
+      .tabs-panel>ul>li>a{
+        color: #00003B;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+      }
+      .tabs-panel>ul>li>a:focus{
+        color: #2F3390;
+        font-weight: 700;
+      }
+      .tabs-panel>ul>li{
+        padding-top: 10px;
+      }
+      .tabs-panel>ul>li:first-child{
+        padding: 0;
+      }
+      .img_info>li{
+        list-style-type: none;
+      }
+      .plan_year{
+        color:#6FBE92 !important;
+      }
+      .modal_input::-moz-placeholder{
+        color: black;
+      }
+      .button_modal:hover{
+        background-color: #a3a3b9f8;
+        transition: 0.5s;
+      }
+      .journal_join::before{
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 0;
+        width: 800px;
+        height: 220px;
+        background-color: #212434;
+        border-bottom: 8px solid #333645;
+        border-right: 8px solid #333645;
+        top: 0;
+        left: 0;
+      }
+      .journal_join::after{
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 0;
+        width: 800px;
+        height: 220px;
+        background-color: #292C3B;
+        bottom: 0px;
+        right: 0px;
+        }
+        .journal_info::after{
+          content: '';
+          width: 220px;
+          height: 160px;
+          background-color: #FEC92F;
+          position: absolute;
+          display: block;
+          z-index: 0;
+          bottom: -100px;
+          right: 37%;
+        }
+        .journal_info::before{
+          content: '';
+          width: 820px;
+          height: 260px;
+          background-color: #EDEDF0;
+          position: absolute;
+          display: block;
+          z-index: 0;
+          top: 200px;
+          right: 0;
+        }
+        header{
+          background-color: #FFFFFF;
+        }
+        .head_content_two{
+          padding-top: 30px;
+          padding-bottom: 25px;
+        }
+        @media(min-width: 639px){
+          .burger_menu_left{
+            display: none;
+          }
+          }
+          @media(max-width: 639px){
+            .img_info_box{
+            display: none;
+          }
+          .menu_header_right{
+            display: none;
+          }
+          .head_content_two{
+            padding: 0;
+          }
+          .in_this_newspaper{
+            display: none;
+          }
+          .news_card{
+            padding-left: 0;
+            margin-top: 30px;
+          }
+          .news_row_two{
+            padding-top: 0 !important; 
+          }
+          .news_row_one, .news_row_two{
+            text-align: center;
+          }
+          .news_row_one>.cell, .news_row_two>.cell{
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+          }
+          .journal_info::before, .journal_info::after{
+            display: none;
+          }
+          .journal_content{
+            padding-left: 0px;
+          }
+          .info_for_journal{
+            font-size: 35px !important;
+            line-height: 40px !important;
+          }
+          .tags{
+            font-size: 25px;
+          }
+          .tabs-panel > ul > li{
+            font-size: 16px;
+          }
+          .joural_container_info{
+            padding-top: 30px;
+            padding-bottom: 0;
+          }
+          .button_cell_price{
+            padding-top: 20px;
+            justify-content: flex-start !important;
+          }
+          .journal_join::before, .journal_join::after{
+            display: none;
+          }
+          .content_journal_join{
+            margin-left: 0 !important;
+          }
+          .margin_content{
+            margin: 0 5px;
+          }
+          header{
+            border: none;
+          }
+          }
+          .dropdown_menu_burger li a{
+            color: #00003B;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+          }
+          .dropdown_menu_burger li a:hover{
+            color: #2f3390;
+          }
+          .title-bar{
+            background-color: #FF1121;
+          }
+    </style>
   </head>
   <body>
-   
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/what-input/dist/what-input.js"></script>
-    <script src="node_modules/foundation-sites/dist/js/foundation.js"></script>
-    <script src="js/app.js"></script>
+      <header>
+          <div class="grid-container" style="background-color:#FFFFFF;">
+            <div class="head_content_two grid-x align-middle margin-x  margin_content">
+              <div class="cell small-12 medium-6 large-3"><img src="img/AI_Image@1X.png" alt="">
+              </div>
+              <div class="cell medium-6 large-1 img_info_box"> 
+                <ul  class="img_info" style="margin: 0;padding-left:20px; font-size:10px; width: 140px; font-family: 'Open Sans', sans-serif; color: #1F1F53">
+                  <li class="cell shrink" >Рекламное издание</li>
+                  <li class="cell shrink" style="padding-top:4px ;" > <span style="border: 1px solid black; border-radius: 100%; display: inline-block; padding: 4px;">12+</span> </li>
+                </ul>
+              </div>
+              <div class="cell large-8 menu_header_right">
+                <ul class="menu grid-x align-right align-center" style="display: flex; justify-content: flex-end;">
+                  <li><a href="#" style="font-size: 13px; font-family: 'Open Sans', sans-serif; color: #00003B; padding: 1rem 1rem; font-weight: 600;">Журнал</a></li>
+                  <li><a href="#" style="font-size: 13px; font-family: 'Open Sans', sans-serif; color: #00003B; padding: 1rem 1rem; font-weight: 600;">Аудитория</a></li>
+                  <li><a href="#" class="plan_year" style="font-size: 13px; font-family: 'Open Sans', sans-serif; color: #00003B; padding: 1rem 1rem; font-weight: 600;">План 2020</a></li>
+                  <li><a href="#" style="font-size: 13px; font-family: 'Open Sans', sans-serif; color: #00003B; padding: 1rem 1rem; font-weight: 600;">Задачи</a></li>
+                  <li><a href="#" style="font-size: 13px; font-family: 'Open Sans', sans-serif; color: #00003B; padding: 1rem 1rem; font-weight: 600;">Сотрудничество</a></li>
+                  <li><a href="#" style="font-size: 13px; font-family: 'Open Sans', sans-serif; color: #00003B; padding: 1rem 1rem; font-weight: 600;">Редакция</a></li>
+                  <li><a class="button button_menu_color align-right" href="#" style="font-size: 13px; font-family: 'Open Sans', sans-serif; color: #00003B; padding: 16px 20px; font-weight: 600;">Читать Журнал</a></li>
+                </ul>
+              </div>
+              <div class="burger_menu_left small-12">
+                <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+                  <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+                  <div class="title-bar-title">Меню</div>
+                </div>
+                
+                <div class="top-bar" id="example-menu">
+                  <div class="top-bar-left">
+                    <ul class="dropdown menu grid-y large-up-12 dropdown_menu_burger" data-dropdown-menu>
+                      <li class="cell"><a href="#">Журнал </a></li>
+                      <li class="cell"><a href="#">Аудитория</a></li>
+                      <li class="cell"><a href="#" class="plan_year">План 2020</a></li>
+                      <li class="cell"><a href="#">Задачи</a></li>
+                      <li class="cell"><a href="#">Сотрудничество</a></li>
+                      <li class="cell"><a href="#">Редакция</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>    
+      </header>
+      <div class="preview">
+        <div class="grid-container"> 
+        <div class="screen_logo" style="position: relative;">
+          <img src="img/Группа 40@1X.png" alt="none">
+        </div>
+        </div>
+      </div>
+      
+      <div class="in_this_newspaper">
+        <div class=" grid-container">
+          <div class="grid-x grid-margin-x in_journal_content_list">
+            <div class="cell in_number_list large-2">В номере:</div>
+            <div class="cell grid-x list_sponsored grid-margin-x large-10">
+              <div class="cell small-12 medium-4 large-2"><img src="img/One.png" alt=""></div>
+              <div class="cell small-12 medium-4 large-2"> <img src="img/two.png" alt=""></div>
+              <div class="cell small-12 medium-4 large-2"> <img src="img/three.png" alt=""></div>
+              <div class="cell small-12 medium-4 large-2"> <img src="img/Four.png" alt=""></div>
+              <div class="cell small-12 medium-4 large-2"> <img src="img/Five.png" alt=""></div>
+              <div class="cell small-12 medium-4 large-2 last_sponsored"> <img src="img/Six.png" alt=""></div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div class="column_news">
+        <div class="grid-container card_container  margin_content">
+          <div class="title_list_one grid-x title_list">Рубрики журнала. <br> Обзор с любой строны</div>
+            <div class="news_card grid-x ">
+              <div class="grid-x news_row_one margin-x ">
+                <div class="cell small-12 large-4"><p class="news_label"><span style="color: red;">новости</span> Электротехники</p><p class="news_title">Подборка свежих новостей электротехнической промышленности</p></div>
+                <div class="cell small-12 large-4"><p class="news_label">тема номера /<span style="color: #E0BA5B;"> аналитика</span></p><p class="news_title">Актуальная тема номера, а также свежее <br> аналитическое исследования из отрасли</p></div>
+                <div class="cell small-12 large-4 last_card "><p class="news_label"><span style="color: #2F3390;">компания <br></span> номера</p><p class="news_title">Знакомим с компаниями<br>электротехнической отрасли</p></div>
+              </div>
+              <div class="grid-x news_row_two padding-x" style="padding-top: 50px;">
+                <div class="cell small-12 large-4"><p class="news_label"><span style="color:#2F3390;">интервью /</span> <br> события</p><p class="news_title">Интервью от лиц отрас с актуальными вопросами.Освещение значиых событий в электротехнике</p></div>
+                <div class="cell small-12 large-4"><p class="news_label">Статьи и обзоры <span style="color: #FF1222;">оборудования</span></p><p class="news_title">Новинки, сравнения и знакомство с компаниями и  продукций на рынке электротехники</p></div>
+                <div class="cell small-12 large-4 last_card" style="justify-content: center;"><p class="news_label"><span style="color:#E0BA5B;">Авторскии</span> колонки</p><p class="news_title">Исследования, практика, советы и многое другое</p></div>
+              </div>
+            </div>
+        </div>
+      </div>
+      
+      <div class="journal_info grid-container full" style="position: relative; z-index: 1;">
+        <div class="joural_container_info grid-container margin_content" style="z-index: 1; position: relative;">
+          <div class="title_list_two grid-x title_list">О журнале</div>
+            <div class="journal_content grid-x align-justify">
+              <div class="cell grid-x medium-12 large-8 left_journal_column">
+                <p class="info_for_journal" style="font-size: 55px; text-transform: uppercase; font-weight: 900; line-height: 70px; font-family: 'PT Sans Caption', sans-serif;">14 лет в отрасли <br> 180+ спецпроектов <br> 2000+ публикаций <br> 970+ мероприятий</p>
+                <p style="font-size: 14px; color: #00003B; font-family: 'Open Sans', sans-serif;">Мы работаем более чем с 5000 брендами и компаниями по всему миру и гордимся,<br>что наш журнал рекомендуют и читают в России и странах Евразийского экономического союза.</p>
+                <div class="tabs cell-12 tabs_table" style="width: 100%; position: relative; z-index: 5; background: none; font-size: 0;">
+                  <div class="grid-container">
+                    <div class="grid-x margin-x">
+                      <div class="cell small-4 medium-5 large-3 left_column_tabs">
+                        <div class="tags tags_age" style="color:#67AF89;">
+                          Год
+                        </div>
+                        <ul class="vertical tabs vertical_tabs" data-tabs id="example-tabs" style="background: none">
+                            <li class="tabs-title"><a href="#panel15v">2020</a></li>
+                            <li class="tabs-title"><a href="#panel13v">2018</a></li>
+                            <li class="tabs-title"><a href="#panel11v">2016</a></li>
+                            <li class="tabs-title"><a href="#panel9v">2014</a></li>
+                            <li class="tabs-title"><a href="#panel7v">2012</a></li>
+                            <li class="tabs-title"><a href="#panel5v">2010</a></li>
+                            <li class="tabs-title"><a href="#panel3v">2008</a></li>
+                            <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">2006</a></li>
+                            <li class="tabs-title"><a href="#panel14v">2019</a></li>
+                            <li class="tabs-title"><a href="#panel12v">2017</a></li>
+                            <li class="tabs-title"><a href="#panel10v">2015</a></li>
+                            <li class="tabs-title"><a href="#panel8v">2013</a></li>
+                            <li class="tabs-title"><a href="#panel6v">2011</a></li>
+                            <li class="tabs-title"><a href="#panel4v">2009</a></li>
+                            <li class="tabs-title"><a href="#panel2v" >2007</a></li>
+                        </ul>
+                      </div>
+                      <div class="cell small-8 medium-7 large-9 right_column_tabs">
+                        <div class="tags">
+                          Номер журнала
+                        </div>
+                        <div class="tabs-content vertical tabs_content_vertical" data-tabs-content="example-tabs" style="background: none">
+                          <div class="tabs-panel is-active" id="panel1v" style="background: none">
+                            <ul>
+                              <li> <a href="##">№1 (1) Январь-Февраль</a></li>
+                              <li> <a href="##">№2 (2) Март-Апрель</a></li>
+                              <li> <a href="##">№3 (3) Май-Июнь</a></li>
+                              <li> <a href="##">№4 (4) Июль-Сентябрь</a></li>
+                              <li> <a href="##">№5 (5) Октрябрь</a></li>
+                              <li> <a href="##">№6 (6) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel2v">
+                            <ul>
+                              <li> <a href="##">№1 (7) Январь-Февраль</a></li>
+                              <li> <a href="##">№2 (8) Март-Апрель</a></li>
+                              <li> <a href="##">№3 (9) Май-Июнь</a></li>
+                              <li> <a href="##">№4 (10) Июль-Сентябрь</a></li>
+                              <li> <a href="##">№5 (11) Октрябрь</a></li>
+                              <li> <a href="##">№6 (12) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel3v">
+                            <ul>
+                              <li><a href="##">№1 (13) Январь-Февраль</a></li>
+                              <li><a href="##">№2 (14) Март-Апрель</a></li>
+                              <li><a href="##">№3 (15) Май-Июнь</a</li>
+                              <li><a href="##">№4 (16) Июль-Сентябрь</a></li>
+                              <li><a href="##">№5 (17) Октрябрь</a></li>
+                              <li><a href="##">№6 (18) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel4v">
+                            <ul>
+                              <li><a href="##">№1 (19) Январь-Февраль</a></li>
+                              <li><a href="##">№2 (20) Март-Апрель</a></li>
+                              <li><a href="##">№3 (21) Май-Июнь</a></li>
+                              <li><a href="##">№4 (22) Июль-Сентябрь</a></li>
+                              <li><a href="##">№5 (23) Октрябрь</a></li>
+                              <li><a href="##">№6 (24) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel5v">
+                            <ul>
+                              <li> <a href="##">№1 (25) Январь-Февраль</a></li>
+                              <li> <a href="##">№2 (26) Март-Апрель</a></li>
+                              <li> <a href="##">№3 (27) Май-Июнь</a></li>
+                              <li> <a href="##">№4 (28) Июль-Сентябрь</a></li>
+                              <li> <a href="##">№5 (29) Октрябрь</a></li>
+                              <li> <a href="##">№6 (30) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel6v">
+                            <ul>
+                              <li><a href="##">№1 (31) Январь-Февраль</a></li>
+                              <li><a href="##">№2 (32) Март-Апрель</a></li>
+                              <li><a href="##">№3 (33) Май-Июнь</a></li>
+                              <li><a href="##">№4 (34) Июль-Сентябрь</a></li>
+                              <li><a href="##">№5 (35) Октрябрь</a></li>
+                              <li><a href="##">№6 (36) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel7v">
+                            <ul>
+                              <li><a href="##">№1 (37) Январь-Февраль</a></li>
+                              <li><a href="##">№2 (38) Март-Апрель</a></li>
+                              <li><a href="##">№3 (39) Май-Июнь</a></li>
+                              <li><a href="##">№4 (40) Июль-Сентябрь</a></li>
+                              <li><a href="##">№5 (41) Октрябрь</a></li>
+                              <li><a href="##">№6 (42) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel8v">
+                            <ul>
+                              <li><a href="##">№1 (43) Январь-Февраль</a></li>
+                              <li><a href="##">№2 (44) Март-Апрель</a></li>
+                              <li><a href="##">№3 (45) Май-Июнь</a></li>
+                              <li><a href="##">№4 (46) Июль-Сентябрь</a></li>
+                              <li><a href="##">№5 (47) Октрябрь</a></li>
+                              <li><a href="##">№6 (48) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel9v">
+                            <ul>
+                              <li> <a href="##">№1 (49) Январь-Февраль</a></li>
+                              <li> <a href="##">№2 (50) Март-Апрель</a></li>
+                              <li> <a href="##">№3 (51) Май-Июнь</a></li>
+                              <li> <a href="##">№4 (52) Июль-Сентябрь</a></li>
+                              <li> <a href="##">№5 (53) Октрябрь</a></li>
+                              <li> <a href="##">№6 (54) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel10v">
+                            <ul>
+                              <li> <a href="##">№1 (55) Январь-Февраль</a></li>
+                              <li> <a href="##">№2 (56) Март-Апрель</a></li>
+                              <li> <a href="##">№3 (57) Май-Июнь</a></li>
+                              <li> <a href="##">№4 (58) Июль-Сентябрь</a></li>
+                              <li> <a href="##">№5 (59) Октрябрь</a></li>
+                              <li> <a href="##">№6 (60) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel11v">
+                            <ul>
+                              <li> <a href="##">№1 (61) Январь-Февраль</a></li>
+                              <li> <a href="##">№2 (62) Март-Апрель</a></li>
+                              <li> <a href="##">№3 (63) Май-Июнь</a></li>
+                              <li> <a href="##">№4 (65) Июль-Сентябрь</a></li>
+                              <li> <a href="##">№5 (65) Октрябрь</a></li>
+                              <li> <a href="##">№6 (66) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel12v">
+                            <ul>
+                              <li><a href="##">№1 (67) Январь-Февраль</a></li>
+                              <li><a href="##">№2 (68) Март-Апрель</a></li>
+                              <li><a href="##">№3 (69) Май-Июнь</a></li>
+                              <li><a href="##">№4 (70) Июль-Сентябрь</a></li>
+                              <li><a href="##">№5 (71) Октрябрь</a></li>
+                              <li><a href="##">№6 (72) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel13v">
+                            <ul>
+                              <li><a href="##">№1 (73) Январь-Февраль</a></li>
+                              <li><a href="##">№2 (74) Март-Апрель</a></li>
+                              <li><a href="##">№3 (75) Май-Июнь</a></li>
+                              <li><a href="##">№4 (76) Июль-Сентябрь</a></li>
+                              <li><a href="##">№5 (77) Октрябрь</a></li>
+                              <li><a href="##">№6 (78) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel14v">
+                            <ul>
+                              <li><a href="##">№1 (79) Январь-Февраль</a></li>
+                              <li><a href="##">№2 (80) Март-Апрель</a></li>
+                              <li><a href="##">№3 (81) Май-Июнь</a></li>
+                              <li><a href="##">№4 (82) Июль-Сентябрь</a></li>
+                              <li><a href="##">№5 (83) Октрябрь</a></li>
+                              <li><a href="##">№6 (84) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                          <div class="tabs-panel" id="panel15v">
+                            <ul>
+                              <li><a href="##">№1 (85) Январь-Февраль</a</li>
+                              <li><a href="##">№2 (86) Март-Апрель</a></li>
+                              <li><a href="##">№3 (87) Май-Июнь</a></li>
+                              <li><a href="##">№4 (88) Июль-Сентябрь</a></li>
+                              <li><a href="##">№5 (89) Октрябрь</a></li>
+                              <li><a href="##">№6 (90) Ноябрь-Декабрь</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="right_journal_column grid-y small-up-12 large-4 grid-container full" style="position: relative; padding: 0;">
+                <div class="cell button_cell_price" style="display: flex; justify-content: flex-end; position: relative; z-index: 5;"><a class="button button_juournal_info" href="##" style="border-radius: 5px;"data-open="exampleModal1">Оформить подписку</a></div>
+                <div style="border-radius: 10px; height: 300px; overflow: hidden;" class="reveal " id="exampleModal1" data-reveal>
+                  <p style="font-size: 24px;">Оформить подписку</p>
+                  <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <form action="POST" class="grid-y" style="height: 160px">
+                    <p class="cell large-4">
+                      <label for="name">
+                        <input type="text" required placeholder="Имя" id="name" class="modal_input">
+                      </label>
+                    </p>
+                    <p class="cell large-4">
+                      <label for="email">
+                        <input type="email" required placeholder="Адрес электронной почты" id="email" class="modal_input">
+                      </label>
+                    </p>
+                    <p class="cell large-4">
+                      <a class="button button_juournal_info" href="##" style="border-radius: 5px;"data-open="exampleModal1">Оформить подписку</a></div>
+                    </p>
+                  </form>
+                <div class="cell image_journal" style="position: relative; z-index: 5;"><img src="img/292_2020@1X.png" alt=""></div>
+              </div> 
+            </div>
+        </div>
+  </div>
+    <div class="journal_join grid-container full" style="position: relative;">
+      <div class="grid-container container_journal_join margin_content" style="position: relative; z-index: 1;">
+        <div class="title_list_three title_list grid-x " style="z-index: 1; position: relative;"  >присоединитесь <br> к команде </div>
+        <div class="grid-x content_journal_join" style="margin-left: 55px; padding-top: 20px; z-index: 1; position: relative;">
+          <div class="cell large-7 grid-y ">
+            <p style="font-family: 'Open Sans', sans-serif; color: white; font-weight:900; text-transform: uppercase; font-size: 30px; line-height: 40px; z-index: 1; position: relative;">
+              опубликуй свой материал в журнале 
+            </p>
+            <p style="font-size: 14px; color: white; font-family: 'Open Sans', sans-serif;">
+              Опубликовать свой материал и присоединиться к команде «Электротехнический рынок? Заполните форму и отправьте материал в нашу редакцию.
+            </p>
+          </div>
+          <div class="align-right grid-x align-bottom large-5" style="position: relative;">   
+            <div><a class="button button_juournal_info" href="#" style="border-radius: 5px; position: relative; z-index: 5;">Отправить материал</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+    <script src="bower_components/jquery/dist/jquery.js?hash=4d87a332421d7631f5e204529a472bff"></script>
+      <script src="bower_components/what-input/what-input.js?hash=af041c30741a345292bed3cb0f1295ca"></script>
+      <script src="bower_components/foundation-sites/dist/foundation.js?hash=37375b21ccbe17669cdc30790ba5a003"></script>
+      <script src="js/app.js?hash=78ce4569316d2924214f821d75e9028f"></script>
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+      <script>
+        $(document).foundation();
+      </script>
   </body>
 </html>
